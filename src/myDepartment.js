@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
 import usersData from "./users.json"; // Import the JSON file
+import { useAppStore } from "./store";
 
-export default function Users() {
+export default function MyDepartment() {
   // State variables for managing user data and search functionality
-  const [userData, setUserData] = useState([]); // Holds the current user data to be displayed
-  const [searchTerm, setSearchTerm] = useState(""); // Holds the search term entered by the user
-  const [searchOption, setSearchOption] = useState("id"); // Holds the selected search option
-  const [originalUserData, setOriginalUserData] = useState([]); // Holds the original user data (unfiltered)
-  const [error] = useState(null); // Placeholder for handling errors (not currently used)
+  const [userData, setUserData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchOption, setSearchOption] = useState("id");
+  const [originalUserData, setOriginalUserData] = useState([]);
+  const [error] = useState(null);
+  const { useDep } = useAppStore(); // Accessing Department data from store
 
-  // Load user data from the JSON file on component mount
+  // Effect to initialize user data from the imported JSON file
   useEffect(() => {
-    // Transform the imported JSON data to the desired format
+    // Transform the raw data from users.json into a more usable format
     const users = usersData.users.map((user) => ({
       id: user.id,
       name: user.name,
       email: user.email,
-      department:user.department,
+      Department: user.department,
+      branch: user.branch,
     }));
 
     // Set both the current and original user data
@@ -24,7 +27,7 @@ export default function Users() {
     setOriginalUserData(users);
   }, []);
 
-  // Update user data based on search criteria whenever searchTerm or searchOption changes
+  // Effect to filter user data based on search term and option
   useEffect(() => {
     // Filter users based on the selected search option and search term
     const filteredUsers = originalUserData.filter((user) => {
@@ -32,13 +35,13 @@ export default function Users() {
       return fieldValue.includes(searchTerm.toLowerCase());
     });
 
-    // Update the current user data with the filtered results
+    // Update the displayed user data
     setUserData(filteredUsers);
   }, [searchTerm, searchOption, originalUserData]);
 
   return (
     <div className="container-for-search">
-      {/* Search input and select for filtering */}
+      {/* Search input and dropdown for filtering users */}
       <div className="search">
         <input
           type="text"
@@ -46,7 +49,7 @@ export default function Users() {
           placeholder="اضغط هنا للبحث عن مستخدمون"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          style={{ direction: "rtl" }} // Right-to-left direction for Arabic text
+          style={{ direction: "rtl" }}
         />
 
         <select
@@ -54,7 +57,6 @@ export default function Users() {
           value={searchOption}
           onChange={(e) => setSearchOption(e.target.value)}
         >
-          {/* Dropdown menu for selecting the search option */}
           <option value="id">ID</option>
           <option value="name">Name</option>
           <option value="email">Email</option>
@@ -63,29 +65,33 @@ export default function Users() {
 
       {/* Display user data in a table */}
       {error ? (
-        // Display an error message if needed (not currently used)
+        // Display an error message if there's an error
         <div className="error-message">{error}</div>
       ) : (
-        // Display the table with user data
+        // Display the user data in a table
         <table>
           <thead>
-            {/* Table header with column names */}
             <tr>
               <th>ID</th>
               <th>Name</th>
               <th>Email</th>
-              <th>department</th>
+              <th>Department</th>
+              <th>Branch</th>
             </tr>
           </thead>
           <tbody>
-            {/* Map through user data and display each user in a table row */}
+            {/* Map through filtered user data and display relevant rows */}
             {userData.map((user) => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.department}</td>
-              </tr>
+              // Check if useDep is equal to the user's Department before rendering
+              useDep === user.Department && (
+                <tr key={user.id}>
+                  <td>{user.id}</td>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td>{user.Department}</td>
+                  <td>{user.branch}</td>
+                </tr>
+              )
             ))}
           </tbody>
         </table>

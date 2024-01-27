@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Upload() {
+export default function ReqUplaod() {
   // State to manage form data
   const [formData, setFormData] = useState({
     id: generateRandomId(), // Generate a unique ID for each form submission
@@ -50,7 +50,7 @@ export default function Upload() {
     try {
       // Validate inputs
       if (!formData.from || !formData.to || !formData.file || !formData.type) {
-        alert("Please enter all values.");
+        console.error("Please enter all values.");
         return;
       }
 
@@ -65,7 +65,7 @@ export default function Upload() {
 
       // Check if the server response is successful
       if (response.ok) {
-        alert("Form data successfully sent to the server!");
+        console.log("Form data successfully sent to the server!");
 
         // Optionally, reset the form after a successful submission
         setFormData({
@@ -106,28 +106,25 @@ export default function Upload() {
     const minutes = currentDate.getMinutes().toString().padStart(2, '0');
     return `${hours}:${minutes}`;
   }
-
   return (
     <div>
-      {/* Import the font-awesome library */}
+      {/* Include the Font Awesome library */}
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
       />
-      {/* Form for uploading files */}
+  
+      {/* Table for uploading files */}
       <table className="upload-table">
         <thead>
-          {/* Table header with column names */}
           <tr>
             <th>From</th>
             <th>To</th>
             <th>File</th>
             <th>Type</th>
-            {/* Optional column for the remove button */}
           </tr>
         </thead>
         <tbody>
-          {/* Table row for user input */}
           <tr>
             {/* Input field for 'From' */}
             <td>
@@ -138,6 +135,7 @@ export default function Upload() {
                 onChange={handleInputChange}
               />
             </td>
+            
             {/* Input field for 'To' */}
             <td>
               <input
@@ -147,14 +145,16 @@ export default function Upload() {
                 onChange={handleInputChange}
               />
             </td>
-            {/* File upload section with label and optional remove button */}
+            
+            {/* File upload section */}
             <td>
               <div id="file-upload-container">
+                {/* Label for file input */}
                 <label htmlFor="file-upload" className="file-label">
-                  {/* Display the selected file name or a placeholder */}
                   {formData.file ? formData.file : "اختر الملف الذي تريده"}
                 </label>
-                {/* Input field for file upload */}
+                
+                {/* File input */}
                 <input
                   id="file-upload"
                   type="file"
@@ -162,15 +162,18 @@ export default function Upload() {
                   name="file"
                   onChange={handleFileChange}
                 />
-                {/* Display remove button if a file is selected */}
+                
+                {/* Display file removal button if a file is selected */}
                 {formData.file && (
                   <button type="button" onClick={handleRemoveFile}>
+                    {/* Font Awesome trash can icon */}
                     <i className="fa-regular fa-trash-can"></i>
                   </button>
                 )}
               </div>
             </td>
-            {/* Dropdown menu for selecting file type */}
+            
+            {/* Dropdown for selecting file type */}
             <td>
               <select
                 id="select-upload"
@@ -179,17 +182,16 @@ export default function Upload() {
                 onChange={handleInputChange}
                 style={{ direction: "rtl" }}
               >
-                {/* Default option */}
                 <option value="">اختر</option>
-                {/* Options for file type */}
                 <option value="صادرة">صادرة</option>
                 <option value="واردة">واردة</option>
               </select>
             </td>
-            {/* Button for submitting the form */}
+            
+            {/* Upload button */}
             <td id="upload-button-final">
               <button type="button" onClick={handleSubmit}>
-                Upload
+              Request
               </button>
             </td>
           </tr>

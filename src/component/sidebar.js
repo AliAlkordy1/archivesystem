@@ -1,16 +1,23 @@
 import { Link } from "react-router-dom";
 
-export default function sideBar(){
-    return( 
-            <div className="sideBar">
-                <Link to="/dashboard/users" className="item-link">   users  </Link>
-        
-                <Link to="/dashboard/Files" className="item-link">   Files  </Link>
-               
-                <Link to="/dashboard/Upload" className="item-link">   Upload  </Link>
-              
+// sideBar component represents the sidebar for admin users
+export default function sideBar() {
+  return (
+    <div className="sideBar">
+      {/* Link to navigate to the 'users' route */}
+      <Link to="/dashboard/users" className="item-link">
+        Users
+      </Link>
 
-            </div>
-            )
+      {/* Link to navigate to the 'Files' route */}
+      <Link to="/dashboard/Files" className="item-link">
+      Documents
+      </Link>
 
+      {/* Link to navigate to the 'Upload' route */}
+      <Link to="/dashboard/Upload" className="item-link">
+        Upload
+      </Link>
+    </div>
+  );
 }

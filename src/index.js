@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import "./dashboard.css";
 import App from './App';
-import {BrowserRouter as Rissky} from "react-router-dom"
+import {BrowserRouter as ArchiveSystem} from "react-router-dom"
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Rissky><App /></Rissky>
+    <ArchiveSystem><App /></ArchiveSystem>
     
 
 );

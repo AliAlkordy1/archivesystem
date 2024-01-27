@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import fileData from "./db"; // Import the JSON file
 
-export default function Users() {
+export default function Files() {
+  // State variables for managing search term and search option
   const [searchTerm, setSearchTerm] = useState("");
   const [searchOption, setSearchOption] = useState("id");
 
+  // Filtered file data based on search term and search option
   const filteredFileData = fileData.files.filter((file) => {
     const fieldValue = String(file[searchOption]).toLowerCase();
     return fieldValue.includes(searchTerm.toLowerCase());
@@ -13,6 +15,7 @@ export default function Users() {
 
   return (
     <div className="container-for-search">
+      {/* Search input and dropdown for filtering files */}
       <div className="search">
         <input
           type="text"
@@ -38,6 +41,7 @@ export default function Users() {
         </select>
       </div>
 
+      {/* Table for displaying file data */}
       <table>
         <thead>
           <tr>
@@ -51,12 +55,14 @@ export default function Users() {
           </tr>
         </thead>
         <tbody>
+          {/* Map through filtered file data and display relevant rows */}
           {filteredFileData.map((file) => (
             <tr key={file.id}>
               <td>{file.id}</td>
               <td>{file.from}</td>
               <td>{file.to}</td>
               <td>
+                {/* Create a link to the file using React Router's Link component */}
                 <Link className="link-file" to={file.fileLink}>
                   {file.file}
                 </Link>

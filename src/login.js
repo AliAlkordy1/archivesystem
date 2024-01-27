@@ -1,69 +1,104 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./component/header";
+import jsonData from "./users.json"; // Update the path accordingly
+import { useAppStore } from "./store";
 
 export default function Login({ onLoginSuccess }) {
+  // React Router hook for navigation
   const navigate = useNavigate();
-  const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
-  const [accept, setAccept] = useState(false);
-  const [emailError, setEmailError] = useState("");
 
+  // State variables for email, password, and acceptance status
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [accept, setAccept] = useState(false);
+
+  // State variables for error messages
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  // Accessing setUserRole and setDep functions from the store
+  const { setUserRole, setDep } = useAppStore();
+
+  // Function to handle form submission
   function submit(e) {
     e.preventDefault();
     setAccept(true);
 
-    let flag = Password.length >= 8;
+    // Check if the password meets the minimum length requirement
+    let flag = password.length >= 8;
 
     if (flag) {
-      // Assuming the JSON data is fetched from a file or API endpoint
-      const jsonData = require("./sample4.json");
+      // Check if user data is available
+      if (jsonData.users && jsonData.users.length > 0) {
+        // Find the user with the provided email and password
+        const user = jsonData.users.find(
+          (user) => user.email === email && user.password === password
+        );
 
-      const user = jsonData.people.find(
-        (person) => person.email === Email && person.password === Password
-      );
+        // Set the user's department in the store
+        setDep(user?.department);
 
-      if (user) {
-        // Successful login
-        window.localStorage.setItem("email", Email);
-        onLoginSuccess();
-        navigate("/dashboard");
+        // If user is found
+        if (user) {
+          // Check if the user has the admin role
+          if (user.userRole === "admin") {
+            setUserRole(true); // Set user role to true only for admin
+          } else {
+            setUserRole(false);
+          }
+
+          // Set email in local storage, trigger login success callback, and navigate to the dashboard
+          window.localStorage.setItem("email", email);
+          onLoginSuccess();
+          navigate("/dashboard");
+        } else {
+          setEmailError("Invalid email or password");
+          setPasswordError(""); // Clear password error when email is incorrect
+        }
       } else {
-        // Incorrect email or password
-        setEmailError("Invalid email or password");
+        setEmailError("User data not available");
       }
+    } else {
+      setPasswordError("The password must be more than 8 characters.");
+      setEmailError(""); // Clear email error when the password is less than 8 characters
     }
   }
 
   return (
     <div>
+      {/* Render the Header component */}
       <Header />
       <div className="father-sign-up">
+        {/* Form for user login */}
         <form onSubmit={submit}>
-          <label htmlFor="Email"> Email: </label>
+          {/* Email input */}
+          <label htmlFor="email"> Email: </label>
           <input
-            id="Email"
+            id="email"
             placeholder="Email"
             type="email"
-            value={Email}
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           ></input>
-          {accept && emailError && (
-            <p className="error">{emailError}</p>
-          )}
+          
+          
+
+          {/* Password input */}
           <label htmlFor="password"> Password: </label>
           <input
             id="password"
             placeholder="Password"
             type="password"
-            value={Password}
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
           ></input>
-          {Password.length < 8 && accept && (
-            <p className="error">The password must be more than 8 characters.</p>
-          )}
-
+          {/* Display password error if any */}
+          {accept && passwordError && <p className="error">{passwordError}</p>}
+          {/* Display email error if any */}
+          {accept && emailError && <p className="error">{emailError}</p>}
+          {/* Submit button */}
           <button type="submit">Sign In</button>
         </form>
       </div>

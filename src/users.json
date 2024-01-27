@@ -2,53 +2,93 @@
     "users": [
       {
         "id": 1,
-        "name": "John Doe",
-        "email": "john.doe@example.com"
+        "name": "Ali Emad",
+        "email": "ali@gmail.com",
+        "password": "11111111",
+        "userRole": "admin",
+        "department":"computer science",
+        "branch":"sw"
       },
       {
         "id": 2,
         "name": "Jane Smith",
-        "email": "jane.smith@example.com"
+        "email": "ahmed@gmail.com",
+        "password": "11111111",
+        "userRole": "user",
+        "department":"computer science",
+        "branch":"ai"
       },
       {
         "id": 3,
         "name": "Michael Johnson",
-        "email": "michael.johnson@example.com"
+        "email": "michael.johnson@example.com",
+        "password": "Secure123!",
+        "userRole": "user",
+        "department":"computer science",
+        "branch":"sw"
       },
       {
         "id": 4,
         "name": "Emily Wilson",
-        "email": "emily.wilson@example.com"
+        "email": "emily.wilson@example.com",
+        "password": "Secure123!",
+        "userRole": "user",
+        "department":"computer science",
+        "branch":"sw"
       },
       {
         "id": 5,
         "name": "Alex Martin",
-        "email": "alex.martin@example.com"
+        "email": "alex.martin@example.com",
+        "password": "Secure123!",
+        "userRole": "user",
+        "department":"computer eng",
+        "branch":"comm"
       },
       {
         "id": 6,
         "name": "Olivia Jones",
-        "email": "olivia.jones@example.com"
+        "email": "olivia.jones@example.com",
+        "password": "Secure123!",
+        "userRole": "user",
+        "department":"computer eng",
+        "branch":"comm"
       },
       {
         "id": 7,
         "name": "Nathan White",
-        "email": "nathan.white@example.com"
+        "email": "nathan.white@example.com",
+        "password": "Secure123!",
+        "userRole": "user",
+        "department":"computer science",
+        "branch":"sw"
       },
       {
         "id": 8,
         "name": "Emma Harris",
-        "email": "emma.harris@example.com"
+        "email": "emma.harris@example.com",
+        "password": "Secure123!",
+        "userRole": "user",
+        "department":"computer science",
+        "branch":"sw"
       },
       {
         "id": 9,
         "name": "William Brown",
-        "email": "william.brown@example.com"
+        "email": "william.brown@example.com",
+        "password": "Secure123!",
+        "userRole": "user",
+        "department":"computer science",
+        "branch":"sw"
       },
       {
         "id": 10,
         "name": "Sophia Davis",
-        "email": "sophia.davis@example.com"
+        "email": "sophia.davis@example.com",
+        "password": "Secure123!",
+        "userRole": "user",
+        "department":"computer science",
+        "branch":"sw"
       }
     ]
   }

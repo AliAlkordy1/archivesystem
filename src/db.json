@@ -1,40 +1,23 @@
 {
   "files": [
     {
-      "id": "_1zlirwjau",
-      "from": "jkgjhgjh",
-      "to": ",mbhjkhkjh",
-      "file": "ali.pdf",
-      "type": "صادرة",
-      "date": "2024/01/23",
-      "time": "04:55"
-    },
-    {
-      "id": "_594ojc5s4",
-      "from": "sada",
-      "to": "dwada",
+      "id": "_hhh7idxwb",
+      "from": "شعبة الموارد البشرية",
+      "to": "الادارية",
       "file": "alif.pdf",
       "type": "صادرة",
-      "date": "2024/01/23",
-      "time": "05:08"
+      "date": "2024/01/24",
+      "time": "10:24",
+      "department": "computer eng"
     },
     {
-      "id": "_tplq46fte",
-      "from": "ali",
-      "to": "abd",
-      "file": "cv _ h.pdf",
-      "type": "صادرة",
-      "date": "2024/01/23",
-      "time": "21:13"
-    },
-    {
-      "id": "_uvthvb0dv",
-      "from": "ali",
-      "to": "الادارية",
-      "file": "cv _ h.pdf",
-      "type": "صادرة",
-      "date": "2024/01/23",
-      "time": "21:15"
+      "id": "_vxcw4rf8i",
+      "from": "الادارية",
+      "to": "المالية",
+      "file": "alif.pdf",
+      "type": "واردة",
+      "date": "2024/01/28",
+      "time": "00:45"
     }
   ]
 }
