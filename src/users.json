@@ -1,95 +1,93 @@
 {
-    "users": [
-      {
-        "id": 1,
-        "name": "Ali Emad",
-        "email": "ali@gmail.com",
-        "password": "11111111",
-        "userRole": "admin",
-        "department":"computer science",
-        "branch":"sw"
-      },
-      {
-        "id": 2,
-        "name": "Jane Smith",
-        "email": "ahmed@gmail.com",
-        "password": "11111111",
-        "userRole": "user",
-        "department":"computer science",
-        "branch":"ai"
-      },
-      {
-        "id": 3,
-        "name": "Michael Johnson",
-        "email": "michael.johnson@example.com",
-        "password": "Secure123!",
-        "userRole": "user",
-        "department":"computer science",
-        "branch":"sw"
-      },
-      {
-        "id": 4,
-        "name": "Emily Wilson",
-        "email": "emily.wilson@example.com",
-        "password": "Secure123!",
-        "userRole": "user",
-        "department":"computer science",
-        "branch":"sw"
-      },
-      {
-        "id": 5,
-        "name": "Alex Martin",
-        "email": "alex.martin@example.com",
-        "password": "Secure123!",
-        "userRole": "user",
-        "department":"computer eng",
-        "branch":"comm"
-      },
-      {
-        "id": 6,
-        "name": "Olivia Jones",
-        "email": "olivia.jones@example.com",
-        "password": "Secure123!",
-        "userRole": "user",
-        "department":"computer eng",
-        "branch":"comm"
-      },
-      {
-        "id": 7,
-        "name": "Nathan White",
-        "email": "nathan.white@example.com",
-        "password": "Secure123!",
-        "userRole": "user",
-        "department":"computer science",
-        "branch":"sw"
-      },
-      {
-        "id": 8,
-        "name": "Emma Harris",
-        "email": "emma.harris@example.com",
-        "password": "Secure123!",
-        "userRole": "user",
-        "department":"computer science",
-        "branch":"sw"
-      },
-      {
-        "id": 9,
-        "name": "William Brown",
-        "email": "william.brown@example.com",
-        "password": "Secure123!",
-        "userRole": "user",
-        "department":"computer science",
-        "branch":"sw"
-      },
-      {
-        "id": 10,
-        "name": "Sophia Davis",
-        "email": "sophia.davis@example.com",
-        "password": "Secure123!",
-        "userRole": "user",
-        "department":"computer science",
-        "branch":"sw"
-      }
-    ]
-  }
-  
+  "users": [
+    {
+      "id": "1",
+      "name": "Ali Emad",
+      "email": "ali@gmail.com",
+      "password": "11111111",
+      "userRole": "admin",
+      "college": "computer science"
+    },
+    {
+      "id": "2",
+      "name": "Jane Smith",
+      "email": "ahmed@gmail.com",
+      "password": "11111111",
+      "userRole": "صادرة",
+      "college": "computer science"
+    },
+    {
+      "id": "3",
+      "name": "Michael Johnson",
+      "email": "michael.johnson@example.com",
+      "password": "Secure123!",
+      "userRole": "واردة",
+      "college": "computer science"
+    },
+    {
+      "id": "4",
+      "name": "Emily Wilson",
+      "email": "emily.wilson@example.com",
+      "password": "Secure123!",
+      "userRole": "صادرة",
+      "college": "computer science"
+    },
+    {
+      "id": "5",
+      "name": "Alex Martin",
+      "email": "alex.martin@example.com",
+      "password": "Secure123!",
+      "userRole": "صادرة",
+      "college": "computer eng"
+    },
+    {
+      "id": "6",
+      "name": "Olivia Jones",
+      "email": "olivia.jones@example.com",
+      "password": "Secure123!",
+      "userRole": "صادرة",
+      "college": "computer eng"
+    },
+    {
+      "id": "7",
+      "name": "Nathan White",
+      "email": "nathan.white@example.com",
+      "password": "Secure123!",
+      "userRole": "صادرة",
+      "college": "computer science"
+    },
+    {
+      "id": "8",
+      "name": "Emma Harris",
+      "email": "emma.harris@example.com",
+      "password": "Secure123!",
+      "userRole": "صادرة",
+      "college": "computer science"
+    },
+    {
+      "id": "9",
+      "name": "William Brown",
+      "email": "william.brown@example.com",
+      "password": "Secure123!",
+      "userRole": "صادرة",
+      "college": "computer science"
+    },
+    {
+      "id": "10",
+      "name": "Sophia Davis",
+      "email": "sophia.davis@example.com",
+      "password": "Secure123!",
+      "userRole": "صادرة",
+      "college": "computer science"
+    },
+    {
+      "id": "omor40ins",
+      "name": "jasem",
+      "email": "cs.20.140@student.uotechnology.edu.iq",
+      "password": "Gg1122443388",
+      "userType": "صادرة",
+      "department": "Civil Engineering",
+      "userRole": "user"
+    }
+  ]
+}

@@ -5,10 +5,12 @@ import Login from "./login";
 import Dashboard from "./dashborad";
 import Users from "./users";
 import Files from "./Files";
-import Upload from "./upload";
-import ReqUpload from "./reqUpload.js";
+import Upload from "./upload"; 
+/* import ReqUpload from "./reqUpload.js"; */
 import MyDepartment from "./myDepartment.js";
 import UserFile from "./userFile.js";
+import WardaUpload from "./wardaUpload.js";
+import CreateUser from "./createUser.js";
 import { useAppStore } from "./store";
 
 export default function App() {
@@ -61,10 +63,12 @@ export default function App() {
           {/* Nested routes for Users, Files, Upload, ReqUpload, MyDepartment, and UserFile */}
           <Route path="users" element={<Users />} />
           <Route path="files" element={<Files />} />
-          <Route path="upload" element={<Upload />} />
-          <Route path="reqUpload" element={<ReqUpload />} />
+          <Route path="createUser" element={<CreateUser />} />
+          {/* <Route path="upload" element={<Upload />} /> */}
+          <Route path="Upload" element={<Upload />} />
           <Route path="myDepartment" element={<MyDepartment />} />
           <Route path="userFile" element={<UserFile />} />
+          <Route path="wardaUpload" element={<WardaUpload />} />
         </Route>
       </Routes>
     </div>

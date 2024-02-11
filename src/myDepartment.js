@@ -9,7 +9,7 @@ export default function MyDepartment() {
   const [searchOption, setSearchOption] = useState("id");
   const [originalUserData, setOriginalUserData] = useState([]);
   const [error] = useState(null);
-  const { useDep } = useAppStore(); // Accessing Department data from store
+  const { useDep, userRole } = useAppStore(); // Accessing Department data and user role from store
 
   // Effect to initialize user data from the imported JSON file
   useEffect(() => {
@@ -18,14 +18,19 @@ export default function MyDepartment() {
       id: user.id,
       name: user.name,
       email: user.email,
-      Department: user.department,
+      college: user.college,
       branch: user.branch,
+      userRole: user.userRole,
+      bookNumber:user.bookNumber, // Added the "type" field
     }));
 
+    // Filter users based on the same college and userRole
+    const filteredUsers = users.filter((user) => user.college === useDep && user.userRole === userRole);
+
     // Set both the current and original user data
-    setUserData(users);
-    setOriginalUserData(users);
-  }, []);
+    setUserData(filteredUsers);
+    setOriginalUserData(filteredUsers);
+  }, [useDep, userRole]);
 
   // Effect to filter user data based on search term and option
   useEffect(() => {
@@ -60,6 +65,7 @@ export default function MyDepartment() {
           <option value="id">ID</option>
           <option value="name">Name</option>
           <option value="email">Email</option>
+          <option value="userRole">userRole</option> {/* Added the "type" option */}
         </select>
       </div>
 
@@ -75,23 +81,23 @@ export default function MyDepartment() {
               <th>ID</th>
               <th>Name</th>
               <th>Email</th>
-              <th>Department</th>
-              <th>Branch</th>
+              <th>college</th>
+              <th>Type</th>
+               {/* Added the "Type" column header */}
             </tr>
           </thead>
           <tbody>
             {/* Map through filtered user data and display relevant rows */}
             {userData.map((user) => (
               // Check if useDep is equal to the user's Department before rendering
-              useDep === user.Department && (
-                <tr key={user.id}>
-                  <td>{user.id}</td>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>{user.Department}</td>
-                  <td>{user.branch}</td>
-                </tr>
-              )
+              <tr key={user.id}>
+                <td>{user.id}</td>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>{user.college}</td>
+                <td>{user.userRole}</td>
+                 {/* Added the "type" field */}
+              </tr>
             ))}
           </tbody>
         </table>

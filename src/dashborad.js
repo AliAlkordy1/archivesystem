@@ -2,6 +2,7 @@ import React from "react";
 import TopBar from "./component/topbar";
 import UserSidebar from "./component/UserSideBar";
 import Sidebar from "./component/sidebar";
+import WardaSideBar from "./component/wardaSideBar";
 import { Outlet } from "react-router-dom";
 
 import { useAppStore } from "./store";
@@ -17,13 +18,15 @@ export default function Dashboard() {
 
       <div className="content-flex">
         {/* Check userRole and render the appropriate sidebar */}
-        {userRole === false ? (
-          // Render the UserSidebar component for non-admin users
+        {userRole === "صادرة" ? (
+          // Render the UserSidebar component for صادرة users
           <UserSidebar />
-        ) : userRole === true ? (
+        ) : userRole === "admin" ? (
           // Render the Sidebar component for admin users
           <Sidebar />
-        ) : null}
+        ) : userRole === "واردة" ? (
+          // Render the Sidebar component for admin users
+          <WardaSideBar /> ): null }
 
         {/* Outlet for rendering nested routes */}
         <div style={{ width: "80%", padding: "20px" }}>

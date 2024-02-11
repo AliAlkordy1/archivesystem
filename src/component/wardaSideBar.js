@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 // UserSideBar component represents the sidebar for non-admin users
-export default function UserSideBar() {
+export default function WardaSideBar() {
   return (
     <div className="sideBar">
       {/* Link to navigate to the 'myDepartment' route */}
@@ -15,7 +15,7 @@ export default function UserSideBar() {
       </Link>
 
       {/* Link to navigate to the 'reqUpload' route */}
-      <Link to="/dashboard/Upload" className="item-link">
+      <Link to="/dashboard/wardaUpload" className="item-link">
         Upload
       </Link>
     </div>

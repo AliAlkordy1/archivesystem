@@ -3,86 +3,93 @@ import { Link } from "react-router-dom";
 import fileData from "./db"; // Import the JSON file
 import { useAppStore } from "./store";
 
-export default function UserFile() {
-  // State variables for search functionality
-  const [searchTerm, setSearchTerm] = useState(""); // Holds the search term entered by the user
-  const [searchOption, setSearchOption] = useState("id"); // Holds the selected search option
+export default function Files({ getUserRole, getUserCollege }) {
+  // State variables for managing search term, search option, and user name
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchOption, setSearchOption] = useState("id");
+  const { userRole, userCollege, userName } = useAppStore();
 
-  // Get the department from the global state using a custom hook
-  const { useDep } = useAppStore();
+  // Function to handle changes in the search term
+  const handleSearchTermChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
-  // Filter files based on search criteria
-  const filteredFileData = fileData.files.filter((file) => {
-    // Convert the field value to lowercase for case-insensitive comparison
-    const fieldValue = String(file[searchOption]).toLowerCase();
-    // Check if the search term is included in the field value
-    return fieldValue.includes(searchTerm.toLowerCase());
-  });
+  // Function to handle changes in the search option
+  const handleSearchOptionChange = (e) => {
+    setSearchOption(e.target.value);
+  };
+
+  // Filtered file data based on search term, search option, user role, user college, and user name
+  const filteredFileData = fileData.files
+    .filter((file) => file.userRole === userRole && file.userCollege === userCollege && file.userName === userName)
+    .filter((file) => {
+      const fieldValue = String(file[searchOption]).toLowerCase();
+      return fieldValue.includes(searchTerm.toLowerCase());
+    });
 
   return (
     <div className="container-for-search">
-      {/* Search input and select for filtering */}
+      {/* Search input and dropdown for filtering files */}
       <div className="search">
         <input
           type="text"
           className="searchTerm"
           placeholder="اضغط هنا للبحث عن ملف"
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={{ direction: "rtl" }} // Right-to-left direction for Arabic text
+          onChange={handleSearchTermChange}
+          style={{ direction: "rtl" }}
         />
 
         <select
           className="searchOption"
           value={searchOption}
-          onChange={(e) => setSearchOption(e.target.value)}
+          onChange={handleSearchOptionChange}
         >
-          {/* Dropdown menu for selecting the search option */}
           <option value="id">File ID</option>
           <option value="from">From</option>
-          <option value="to">To</option>
           <option value="file">File</option>
           <option value="type">Type</option>
           <option value="date">Date</option>
-          <option value="time">Time</option>
+          <option value="userRole">User Role</option>
+          <option value="userCollege">User College</option>
+          <option value="userName">User Name</option>
         </select>
       </div>
 
-      {/* Table displaying filtered file data */}
+      {/* Table for displaying file data */}
       <table>
         <thead>
           <tr>
             <th>File ID</th>
+            <th>bookNumber</th>
             <th>From</th>
-            <th>To</th>
             <th>File</th>
             <th>Type</th>
-            <th>Department</th> 
             <th>Date</th>
-            <th>Time</th>
+            <th>User Role</th>
+            <th>User College</th>
+            <th>User Name</th>
           </tr>
         </thead>
         <tbody>
+          {/* Map through filtered file data and display relevant rows */}
           {filteredFileData.map((file) => (
-            // Check if useDep is equal to the file's department
-            useDep === file.department && (
-              <tr key={file.id}>
-                {/* Display file details in table cells */}
-                <td>{file.id}</td>
-                <td>{file.from}</td>
-                <td>{file.to}</td>
-                <td>
-                  {/* Link to the file with a styled class */}
-                  <Link className="link-file" to={file.fileLink}>
-                    {file.file}
-                  </Link>
-                </td>
-                <td>{file.type}</td>
-                <td>{file.department}</td> 
-                <td>{file.date}</td>
-                <td>{file.time}</td>
-              </tr>
-            )
+            <tr key={file.id}>
+              <td>{file.id}</td>
+              <td>{file.bookNumber}</td>
+              <td>{file.from}</td>
+              <td>
+                {/* Create a link to the file using React Router's Link component */}
+                <Link className="link-file" to={file.fileLink}>
+                  {file.file}
+                </Link>
+              </td>
+              <td>{file.type}</td>
+              <td>{file.date}</td>
+              <td>{file.userRole}</td>
+              <td>{file.userCollege}</td>
+              <td>{file.userName}</td>
+            </tr>
           ))}
         </tbody>
       </table>

@@ -9,15 +9,15 @@ export default function sideBar() {
         Users
       </Link>
 
+      <Link to="/dashboard/createUser" className="item-link" > Create User </Link>
       {/* Link to navigate to the 'Files' route */}
       <Link to="/dashboard/Files" className="item-link">
       Documents
       </Link>
-
       {/* Link to navigate to the 'Upload' route */}
-      <Link to="/dashboard/Upload" className="item-link">
+      {/* <Link to="/dashboard/Upload" className="item-link">
         Upload
-      </Link>
+      </Link> */}
     </div>
   );
 }

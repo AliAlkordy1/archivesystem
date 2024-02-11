@@ -19,7 +19,8 @@ export default function Login({ onLoginSuccess }) {
 
   // Accessing setUserRole and setDep functions from the store
   const { setUserRole, setDep } = useAppStore();
-
+  const{ setUserCollege } = useAppStore();
+  const {setUserName}=useAppStore();
   // Function to handle form submission
   function submit(e) {
     e.preventDefault();
@@ -37,20 +38,27 @@ export default function Login({ onLoginSuccess }) {
         );
 
         // Set the user's department in the store
-        setDep(user?.department);
-
+        setDep(user?.college);
         // If user is found
+        
         if (user) {
-          // Check if the user has the admin role
-          if (user.userRole === "admin") {
-            setUserRole(true); // Set user role to true only for admin
+          if (user.userRole === "صادرة") {
+            console.log("Setting user role:", user.userRole);
+            setUserRole("صادرة");
+          } else if (user.userRole === "واردة") {
+            console.log("Setting user role:", user.userRole);
+            setUserRole("واردة");
           } else {
-            setUserRole(false);
+            console.log("Setting user role:", user.userRole);
+            setUserRole("admin"); // Set a default role if the role is not recognized
           }
-
+          setUserCollege(user.college);
+          setUserName(user.name);
+          console.log("Setting user role:", user.userRole);
           // Set email in local storage, trigger login success callback, and navigate to the dashboard
           window.localStorage.setItem("email", email);
           onLoginSuccess();
+          setUserRole(user.userRole);
           navigate("/dashboard");
         } else {
           setEmailError("Invalid email or password");

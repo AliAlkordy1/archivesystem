@@ -101,3 +101,137 @@ body{
   font-size: 12px;
   margin-top: 0;
 }
+  /*   */
+/* #usen-input-container{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+  #user-input{
+    width: 50%;
+    text-align: center;
+  } */
+  #user-input input, #user-input select,#user-input input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #a0c8cf;
+    border-radius: 4px;
+    box-sizing: border-box;
+
+  }
+  #user-input input:focus,#user-input select:focus{
+    outline: none;
+  }
+
+
+  #user-input input[type=submit]{
+
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  #user-input [type=submit]:hover{
+
+    background-color: #45a049;
+  }
+
+
+  #upload-file input[type=text],   #upload-file select,  #upload-file textarea{
+    width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+
+
+  }
+
+  #upload-file label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+
+  #upload-submit  {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+
+
+
+  #upload-file input:focus, #upload-file select:focus,#upload-file textarea:focus{
+    outline: none;
+  }
+  
+  #date{
+    margin-left: 10px;
+  }
+  #secret{
+    border-bottom: 1px solid #ccc;
+  }
+  .file-upload-button{
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+  }
+  #upload-delete{
+    background-color: red;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    margin-right: 10px;
+
+  }  
+ 
+  input[type="file"]::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  
+  input[type="file"]::before {
+    content: 'اختر الكتاب';  /* Set your custom label text here */
+    display: inline-block;
+    background: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  input[type="file"]:hover::before {
+    background: #2980b9;
+  }
+  input[type="file"]{
+    color: transparent;
+  }
+  .remove-file-button {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    margin-right: 10px;
+  }
+  
+  .remove-file-button:hover {
+    background-color: #c0392b;
+  }
+  
+ 

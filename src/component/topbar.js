@@ -25,7 +25,7 @@ export default function TopBar() {
       <img src={require('./klipartz.com.png')} alt="logo" id="logo-img" />
 
       {/* Logout button */}
-      <button onClick={handleLogout} id="go-to-website-button">
+      <button onClick={handleLogout} className="go-to-website-button">
         Log out
       </button>
     </div>

@@ -16,7 +16,8 @@ export default function Users() {
       id: user.id,
       name: user.name,
       email: user.email,
-      department:user.department,
+      college: user.college,
+      userRole: user.userRole, // Added the "userRole" field
     }));
 
     // Set both the current and original user data
@@ -58,6 +59,7 @@ export default function Users() {
           <option value="id">ID</option>
           <option value="name">Name</option>
           <option value="email">Email</option>
+          <option value="userRole">User Role</option> {/* Added the "userRole" option */}
         </select>
       </div>
 
@@ -74,7 +76,8 @@ export default function Users() {
               <th>ID</th>
               <th>Name</th>
               <th>Email</th>
-              <th>department</th>
+              <th>college</th>
+              <th>User Role</th> {/* Added the "User Role" column header */}
             </tr>
           </thead>
           <tbody>
@@ -84,7 +87,8 @@ export default function Users() {
                 <td>{user.id}</td>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td>{user.department}</td>
+                <td>{user.college}</td>
+                <td>{user.userRole}</td> {/* Added the "userRole" field */}
               </tr>
             ))}
           </tbody>

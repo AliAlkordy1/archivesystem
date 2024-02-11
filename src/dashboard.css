@@ -13,7 +13,7 @@ box-shadow: 1px 1px 10px 1px #cbc9c9;
   width: 50px;
 
 }
-#go-to-website-button{
+.go-to-website-button{
 outline: none;
 border: none;
 background-color: red;
@@ -27,7 +27,7 @@ font-weight: bold;
 text-decoration: none;
 
 }
-#go-to-website-button:hover{
+.go-to-website-button:hover{
 background-color: white;
 border: 2px solid red;
 color: red;
@@ -185,3 +185,22 @@ text-overflow: ellipsis;
 
 
 }
+#go-to-website-button{
+  outline: none;
+  border: none;
+  background-color: red;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 2px solid white;
+  font-weight: bold;
+  text-decoration: none;
+  
+  }
+  #go-to-website-button:hover{
+  background-color: white;
+  border: 2px solid red;
+  color: red;
+  }

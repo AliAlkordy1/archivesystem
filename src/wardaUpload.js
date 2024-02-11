@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useAppStore } from "./store";
 
-export default function Upload({ getUserRole, getUserCollege }) {
+export default function WardaUpload({ getUserRole, getUserCollege }) {
   const [formData, setFormData] = useState({
     bookNumber: "",
     from: "",
@@ -108,14 +108,14 @@ export default function Upload({ getUserRole, getUserCollege }) {
             placeholder="ادخل رقم الكتاب"
           ></input>
 
-          <label htmlFor="from">جهة الاصدار</label>
+          <label htmlFor="from">الجهة الواردة</label>
           <input
             type="text"
             id="from"
             name="from"
             value={formData.from}
             onChange={handleInputChange}
-            placeholder="ادخل جهة الاصدار"
+            placeholder="ادخل الجهة الواردة"
           ></input>
 
           <label htmlFor="bookName">عنوان الكتاب</label>
